@@ -1,15 +1,15 @@
-<h1 align="center">
 
+<div align="center">
 <img width=100 src="https://camo.githubusercontent.com/2b61ded391a1f3028ebdb8dc6e8513be132f9b0f1f9f314949f183ec7b52870b/68747470733a2f2f692e696d6775722e636f6d2f367146436c41312e706e67">
 
 nixstation
 
-<p style="color: #8B949E; font-size: 12px">
-“Look again at that dot. That's here. That's home. That's us”
-</br>
-<cite style="font-size: 8px">— Carl Sagan, Pale Blue Dot: A Vision of the Human Future in Space<cite>
+<blockquote cite="https://www.huxley.net/bnw/four.html">
+  “Look again at that dot. That's here. That's home. That's us”
+  </br>
+  <footer><sup>—Carl Sagan, <cite>Pale Blue Dot: A Vision of the Human Future in Space</cite></sup></footer>
+</blockquote>
 
-</p>
 
 
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -45,7 +45,8 @@ nixstation
          <!--   <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=313244&colorB=F5A97F&logo=unlicense&logoColor=F5A97F&"/>-->
          <!--</a>-->
 </div>
+</div>
 
-</h1>
+<h1></h1>
 
 This is my personal configuration files that I use daily.
