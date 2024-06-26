@@ -1,0 +1,22 @@
+line-length = 79
+
+[format]
+preview = true
+
+[lint]
+select = [
+    "ANN",
+    "ARG",
+    "E",
+    "I",
+    "W",
+]
+ignore = [
+    "ANN101",
+]
+
+[lint.isort]
+force-single-line = true
+required-imports = [
+    "from __future__ import annotations"
+]
