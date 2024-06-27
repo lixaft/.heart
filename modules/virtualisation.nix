@@ -6,7 +6,6 @@
 
     podman = {
       enable = true;
-      # dockerSocket.enable = true; # TODO: maybe for the `act` issue?
       defaultNetwork.settings.dns_enabled = true;
     };
   };
@@ -19,6 +18,6 @@
 
   users.users.${system.user}.extraGroups = [
     "libvirtd"
-    "podman" # TODO: check if it actually fix `act` without sudo.
+    "podman"
   ];
 }
