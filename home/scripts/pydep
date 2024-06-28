@@ -32,7 +32,7 @@ def main() -> int:
 
     modules: defaultdict[str, list[str]] = defaultdict(list)
 
-    for dirpath, dirnames, filenames in os.walk(args.path):
+    for dirpath, _, filenames in os.walk(args.path):
         for filename in filenames:
             path = os.path.join(dirpath, filename)
             ext = os.path.splitext(path)[-1]
@@ -69,6 +69,8 @@ def main() -> int:
         if args.sources:
             for file in files:
                 sys.stdout.write(f"  \033[2m{file}\033[m\n")
+
+    sys.stdout.flush()
 
     return 0
 

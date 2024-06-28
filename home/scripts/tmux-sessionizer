@@ -2,43 +2,43 @@
 # set -eo pipefail
 
 function filter_dirs() {
-	for each in $(cat "/dev/stdin"); do
-		if [[ -e "$each/.git" || -e "$each/HEAD" ]]; then
-			printf "%s\n" "$each"
-		fi
-	done
+    for each in $(cat "/dev/stdin"); do
+        if [[ -e "$each/.git" || -e "$each/HEAD" ]]; then
+            printf "%s\n" "$each"
+        fi
+    done
 }
 
 # No input.
 if [ -z "$1" ]; then
-	dir="$(find "$HOME" "$HOME/dev" "$HOME/dev/stim"  -mindepth 1 -maxdepth 1 -type d 2>/dev/null | filter_dirs | fzf)"
-	if [[ $? -ne 0 ]]; then
-		exit 1
-	fi
-	name="$(basename "$dir" | tr "." "_")"
-	cmd=""
+    dir="$(find "$HOME" "$HOME/dev" "$HOME/dev/stim" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | filter_dirs | fzf)"
+    if [[ $? -ne 0 ]]; then
+        exit 1
+    fi
+    name="$(basename "$dir" | tr "." "_")"
+    cmd=""
 
 # Input is a directory.
 elif [ -d "$1" ]; then
-	dir="$1"
-	name="$(basename "$1" | tr "." "_")"
-	cmd=""
+    dir="$1"
+    name="$(basename "$1" | tr "." "_")"
+    cmd=""
 
 # Input is a file.
 else
-	dir="$(dirname "$1")"
-	name="$(basename "${1%.*}" | tr "." "_")"
-	cmd="$EDITOR $(basename "$1")"
+    dir="$(dirname "$1")"
+    name="$(basename "${1%.*}" | tr "." "_")"
+    cmd="$EDITOR $(basename "$1")"
 fi
 
 # Create the session if needed.
 if ! tmux has-session -t="$name" 2>"/dev/null"; then
-	tmux new-session -d -s "$name" -c "$dir" -- $cmd
+    tmux new-session -d -s "$name" -c "$dir" -- $cmd
 fi
 
 # Attach the session.
 if [ -z "$TMUX" ]; then
-	tmux attach-session -t "$name"
+    tmux attach-session -t "$name"
 else
-	tmux switch-client -t "$name"
+    tmux switch-client -t "$name"
 fi

@@ -43,6 +43,7 @@ in
       nodePackages.prettier
       ruff
       selene
+      shfmt
       stylua
     ];
 

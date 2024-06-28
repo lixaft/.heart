@@ -5,7 +5,6 @@ import argparse
 import os
 import subprocess
 import sys
-import threading
 from concurrent.futures import ThreadPoolExecutor
 from threading import Lock
 from typing import TYPE_CHECKING
@@ -40,6 +39,7 @@ def _get_repos(directory: str) -> Iterator[str]:
 def cmd_list(args: argparse.Namespace) -> int:
     for repo in _get_repos(args.directory):
         sys.stdout.buffer.write(_fmt_repo(repo))
+        sys.stdout.buffer.flush()
     return 0
 
 
@@ -57,6 +57,7 @@ def _status(repo: str) -> None:
         sys.stdout.buffer.write(_fmt_repo(repo))
         sys.stdout.buffer.write(ret.stderr)
         sys.stdout.buffer.write(ret.stdout)
+        sys.stdout.buffer.flush()
 
 
 def cmd_status(args: argparse.Namespace) -> int:
@@ -79,6 +80,7 @@ def _pull(repo: str) -> int:
         sys.stdout.buffer.write(_fmt_repo(repo))
         sys.stdout.buffer.write(ret.stderr)
         sys.stdout.buffer.write(ret.stdout)
+        sys.stdout.buffer.flush()
 
     return 0
 
@@ -105,6 +107,7 @@ def _diff(repo: str) -> None:
         sys.stdout.buffer.write(_fmt_repo(repo))
         sys.stdout.buffer.write(ret.stderr)
         sys.stdout.buffer.write(ret.stdout)
+        sys.stdout.buffer.flush()
 
 
 def cmd_diff(args: argparse.Namespace) -> int:
