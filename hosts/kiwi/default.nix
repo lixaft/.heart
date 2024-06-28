@@ -1,9 +1,9 @@
 { config, system, ... }:
 {
   imports = [
-    ../modules/desktop.nix
-    ../modules/workstation.nix
-    ./hardware/lemon.nix
+    ../../modules/desktop.nix
+    ../../modules/workstation.nix
+    ./hardware.nix
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];

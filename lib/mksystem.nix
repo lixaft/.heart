@@ -42,8 +42,8 @@ nixpkgs.lib.nixosSystem {
 
     (if wsl then wslModule else { })
 
-    ../hosts/${host}.nix
-    ../users/${user}.nix
+    ../hosts/${host}
+    ../users/${user}
 
     (if home then homeModule else { })
     (if home then homeConfig else { })
