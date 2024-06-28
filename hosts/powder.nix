@@ -1,6 +1,6 @@
 { system, ... }:
 {
-  imports = [ ./shared/wsl.nix ];
+  imports = [ ../modules/workstation.nix ];
 
   wsl = {
     wslConf.automount.root = "/mnt";

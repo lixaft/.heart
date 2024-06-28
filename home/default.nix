@@ -38,9 +38,6 @@ in
 
       fd = "${pkgs.fd}/bin/fd --hidden";
       grep = "${pkgs.ripgrep}/bin/rg";
-
-      docker = "podman";
-      docker-compose = "podman-compose";
     };
 
     packages = with pkgs; [
@@ -62,7 +59,6 @@ in
       killall
       less
       parallel
-      podman-tui
       rename
       ripgrep
       tlrc

@@ -1,5 +1,30 @@
-{ pkgs, ... }:
+{ system, pkgs, ... }:
 {
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      efiSupport = true;
+      useOSProber = true;
+      device = "nodev";
+    };
+  };
+
+  hardware = {
+    bluetooth.enable = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+  };
+
+  networking = {
+    hostName = system.host;
+    networkmanager.enable = true;
+    firewall.enable = true;
+  };
+
   services = {
     displayManager = {
       defaultSession = "none+i3";
@@ -25,7 +50,22 @@
         ];
       };
     };
+
+    pipewire = {
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse = {
+        enable = true;
+      };
+    };
+
+    blueman.enable = true;
   };
+
+  sound.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -33,4 +73,6 @@
     xdgOpenUsePortal = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
+
+  users.users.${system.user}.extraGroups = [ "networkmanager" ];
 }

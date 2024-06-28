@@ -1,9 +1,17 @@
-{ ... }:
+{ config, system, ... }:
 {
   imports = [
-    ../modules/bluetooth.nix
-    ../modules/nvidia.nix
+    ../modules/desktop.nix
+    ../modules/workstation.nix
     ./hardware/lemon.nix
-    ./shared/linux.nix
   ];
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  system.stateVersion = system.stateVersion;
 }
