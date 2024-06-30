@@ -1,5 +1,6 @@
-{ pkgs, colors, ... }:
+{ pkgs, theme, ... }:
 let
+  inherit (theme) colors;
   tokyo-night = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "tokyo-night";
     version = "unstable-2023-01-06";

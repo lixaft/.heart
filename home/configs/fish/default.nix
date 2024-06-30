@@ -1,4 +1,7 @@
-{ colors, pkgs, ... }:
+{ theme, pkgs, ... }:
+let
+  inherit (theme) colors;
+in
 {
   programs.starship.enableFishIntegration = false;
 

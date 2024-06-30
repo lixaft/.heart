@@ -1,4 +1,7 @@
-{ colors, ... }:
+{ theme, ... }:
+let
+  inherit (theme) colors;
+in
 {
   programs.alacritty = {
     enable = true;
@@ -22,30 +25,30 @@
 
       colors = {
         primary = {
-          background = "#030305";
+          background = colors.bg;
           foreground = colors.fg;
         };
         normal = {
-          black = "#15161e";
           inherit (colors)
-            red
-            green
-            yellow
+            black
             blue
-            magenta
             cyan
+            green
+            magenta
+            red
+            yellow
             ;
-          white = colors.fg_dark;
+          white = colors.fg;
         };
         bright = {
-          black = colors.terminal_black;
           inherit (colors)
-            red
-            green
-            yellow
+            black
             blue
-            magenta
             cyan
+            green
+            magenta
+            red
+            yellow
             ;
           white = colors.fg;
         };
@@ -56,7 +59,7 @@
           }
           {
             index = 17;
-            color = colors.red1;
+            color = colors.red;
           }
         ];
       };

@@ -1,65 +1,56 @@
 local lualine = require("lualine")
+local c = require("theme").colors
 
 lualine.setup({
   options = {
-    globalstatus = true,
+    theme = {
+      normal = {
+        a = { fg = c.bar.bg_light, bg = c.accent, gui = "bold" },
+        b = { fg = c.bar.fg, bg = c.bar.bg_light },
+        c = { fg = c.bar.fg, bg = c.bar.bg_dark },
+      },
+      insert = { a = { fg = c.bar.bg_light, bg = c.magenta, gui = "bold" } },
+      visual = { a = { fg = c.bar.bg_light, bg = c.magenta, gui = "bold" } },
+      replace = { a = { fg = c.bar.bg_light, bg = c.red, gui = "bold" } },
+      command = { a = { fg = c.bar.bg_light, bg = c.yellow, gui = "bold" } },
+      terminal = { a = { fg = c.bar.bg_light, bg = c.green, gui = "bold" } },
+    },
 
     component_separators = {
       left = "।",
       right = "।",
     },
 
+    globalstatus = true,
+
     section_separators = {
       left = "",
       right = "",
     },
+  },
 
-    disabled_filetypes = {
-      statusline = {},
-      winbar = {},
+  sections = {
+    lualine_a = {
+      "mode",
     },
-
-    sections = {
-      lualine_a = {
-        "mode",
-      },
-      lualine_b = {
-        "branch",
-        "diff",
-        "diagnostics",
-        -- {
-        --   "diagnostics",
-        --   sources = { "nvim_diagnostic" },
-        --   symbols = {
-        --     error = "✘ ",
-        --     warn = "▲ ",
-        --     hint = "⚑ ",
-        --     info = " ",
-        --   },
-        -- },
-      },
-      lualine_c = {
-        "filename",
-      },
-      lualine_x = {
-        "encoding",
-        "fileformat",
-        "filetype",
-      },
-      lualine_y = {
-        "progress",
-      },
-      lualine_z = {
-        "location",
-      },
+    lualine_b = {
+      "branch",
+      "diff",
+      "diagnostics",
     },
-    inactive_sections = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = { "filename" },
-      lualine_x = { "location" },
-      lualine_y = {},
-      lualine_z = {},
+    lualine_c = {
+      "filename",
+    },
+    lualine_x = {
+      "encoding",
+      "fileformat",
+      "filetype",
+    },
+    lualine_y = {
+      "progress",
+    },
+    lualine_z = {
+      "location",
     },
   },
 })

@@ -14,14 +14,14 @@ in
 {
   home = rec {
     username = system.user;
-    homeDirectory = "/home/${system.user}";
+    homeDirectory = "/home/${username}";
     sessionPath = [ "${homeDirectory}/.local/bin" ];
 
     file = {
-      ".local/bin/pydep".source = mkOutOfStoreSymlink scripts_dir + "/pydep";
-      ".local/bin/tmux-sessionizer".source = mkOutOfStoreSymlink scripts_dir + "/tmux-sessionizer";
-      ".local/bin/repdir".source = mkOutOfStoreSymlink scripts_dir + "/repdir";
       ".background-image".source = theme.wallpaper;
+      ".local/bin/pydep".source = mkOutOfStoreSymlink scripts_dir + "/pydep";
+      ".local/bin/repdir".source = mkOutOfStoreSymlink scripts_dir + "/repdir";
+      ".local/bin/tmux-sessionizer".source = mkOutOfStoreSymlink scripts_dir + "/tmux-sessionizer";
     };
 
     shellAliases = rec {
@@ -91,9 +91,6 @@ in
       feh
       xclip
 
-      # Wayland Desktop.
-      swaybg
-
       # Applications.
       alacritty
       bazecor
@@ -123,8 +120,8 @@ in
   programs = {
     bash.enable = true;
     home-manager.enable = true;
-    zoxide.enable = true;
     thefuck.enable = true;
+    zoxide.enable = true;
   };
 
   services = {

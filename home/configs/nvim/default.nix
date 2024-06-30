@@ -1,20 +1,22 @@
 {
   config,
-  colors,
   pkgs,
+  theme,
   ...
 }:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
   nvim_dir = "${config.home.homeDirectory}/nixstation/home/configs/nvim";
+
+  jsonFormat = pkgs.formats.json { };
 in
 {
   xdg.configFile = {
     "nvim/after".source = mkOutOfStoreSymlink nvim_dir + "/after";
-    "nvim/lua/lixaft".source = mkOutOfStoreSymlink nvim_dir + "/lua/lixaft";
-    "nvim/plugin".source = mkOutOfStoreSymlink nvim_dir + "/plugin";
     "nvim/init.lua".source = mkOutOfStoreSymlink nvim_dir + "/init.lua";
-    "nvim/lua/nix.lua".text = import ./lua/nix.nix colors;
+    "nvim/lua".source = mkOutOfStoreSymlink nvim_dir + "/lua";
+    "nvim/plugin".source = mkOutOfStoreSymlink nvim_dir + "/plugin";
+    "nvim/theme.json".source = jsonFormat.generate "theme.json" theme;
   };
 
   programs.neovim = {
@@ -81,7 +83,6 @@ in
       nvim-web-devicons
       oil-nvim
       telescope-nvim
-      tokyonight-nvim
       treesj
       undotree
       vim-better-whitespace

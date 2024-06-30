@@ -1,4 +1,7 @@
-{ colors, ... }:
+{ theme, ... }:
+let
+  inherit (theme) colors;
+in
 {
   programs.fzf = {
     enable = true;

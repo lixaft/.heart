@@ -1,4 +1,4 @@
-{ colors, ... }:
+{ ... }:
 let
   mod = "Mod4";
   refresh_i3_status = "killall -SIGUSR1 i3blocks";
