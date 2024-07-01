@@ -8,7 +8,7 @@ let
       owner = "janoamaral";
       repo = "tokyo-night-tmux";
       rev = "master";
-      sha256 = "sha256-3rMYYzzSS2jaAMLjcQoKreE0oo4VWF9dZgDtABCUOtY=";
+      sha256 = "sha256-k4CbfWdyk7m/T97ytxLOEMUKrkU5iJSIu3lvyT1B1jU=";
     };
     postInstall = # sh
       ''

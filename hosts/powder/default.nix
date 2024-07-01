@@ -1,9 +1,15 @@
 { system, ... }:
 {
-  imports = [ ../modules/workstation.nix ];
+  imports = [ ../../modules/workstation.nix ];
 
   wsl = {
-    wslConf.automount.root = "/mnt";
+    enable = true;
+    startMenuLaunchers = true;
+    defaultUser = system.user;
+    wslConf = {
+      automount.root = "/mnt";
+      network.hostname = system.host;
+    };
   };
 
   fileSystems = {
